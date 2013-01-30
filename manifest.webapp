@@ -1,0 +1,13 @@
+{
+  "name": "UI 2takeaway",
+  "description": "Common UI patterns for common apps",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/gphx/icons/appicon.png"
+  },
+  "developer": {
+    "name": "Ismael Gonzalez - @basiclines",
+    "url": "http://sweetbits.es"
+  },
+  "default_locale": "en"
+}

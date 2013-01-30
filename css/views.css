@@ -1,0 +1,65 @@
+/* View positioning*/
+[data-viewport] {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 5rem; /* Header height */
+	bottom: 4rem; /* Tabs height */
+	overflow: auto;
+	opacity: 0;
+	background: #fff;
+	-moz-transform: translate(0) scale(1);
+	-moz-transition: all 0.3s ease;
+}
+
+[data-viewport].active {
+	opacity: 1;
+	-moz-transform: translate(0) scale(1);
+	z-index: 1;
+	pointer-events: auto;
+}
+
+[data-viewport].notransition {
+	-moz-transition: none;
+}
+
+[data-viewport].fullscreen { top: 0; bottom: 0; z-index: 500; }
+
+/* top/bottom */
+[data-viewport="before"] { -moz-transform: translateY(-100%); }
+[data-viewport="after"] { -moz-transform: translateY(100%); }
+
+/* left/right */
+[data-viewport="start"] { -moz-transform: translateX(-100%); }
+[data-viewport="end"] { -moz-transform: translateX(100%); }
+
+/* behind/above */
+[data-viewport="behind"],
+[data-viewport="above"] { pointer-events: none; }
+[data-viewport="behind"] { -moz-transform: scale(0.5); }
+[data-viewport="above"] { -moz-transform: scale(1.5); }
+
+
+/* List view */
+.list { }
+
+
+/* Settings view */
+.settings { background: #EFF0EB;  }
+	.settings.bb-list li aside.pack-end { margin: 0 0 0 1.5rem; }
+
+
+/* Error view */
+.error { text-align: center; white-space: nowrap; }
+	.error:after {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		width: 1px;
+		height: 100%;
+	}
+	.error .inner { display: inline-block; vertical-align: middle; white-space: normal; }
+	.error h1,
+	.error p {  line-height: 1em; margin: 0; }
+	.error h1 { font-size: 7rem; }
+	.error p { font-size: 3rem; color: #8a8a8a; }

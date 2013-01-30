@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+
+		<title>My Secret App</title>
+
+		<!-- Shared CSS -->
+		<link rel="stylesheet" type="text/css" href="shared/style/headers.css">
+		<link rel="stylesheet" type="text/css" href="shared/style/buttons.css">
+		<link rel="stylesheet" type="text/css" href="shared/style/switches.css">
+		<link rel="stylesheet" type="text/css" href="shared/style/input_areas.css">
+		<link rel="stylesheet" type="text/css" href="shared/style_unstable/tabs.css">
+		<link rel="stylesheet" type="text/css" href="shared/style_unstable/lists.css">
+
+		<!-- Override BB styles -->
+		<link rel="stylesheet" type="text/css" href="css/bb-override.css">
+
+		<!-- App flow -->
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<link rel="stylesheet" type="text/css" href="css/skin.css">
+		<link rel="stylesheet" type="text/css" href="css/views.css">
+
+		<script type="text/javascript" src="js/views.js"></script>
+		<script type="text/javascript" src="js/ready.js"></script>
+	</head>
+
+	<body>
+
+		<section id="main" role="region" class="wrapper">
+			<header class="header">
+				<a href="#" data-trigger="back" data-hideon="list" class="back"><span class="icon icon-back">Back</span></a>
+				<menu type="toolbar">
+					<a href="#" data-showon="list" data-trigger="edit" class="action">Edit</a>
+				</menu>
+				<h1 data-showon="list">List</h1>
+				<h1 data-showon="detail" class="hidden">Detail</h1>
+				<h1 data-showon="add" class="hidden">Add</h1>
+			</header>
+
+			<section id="views" class="views">
+
+				<!-- List  -->
+				<section id="list" data-viewport="start" class="list bb-list" data-type="list">
+					 <header>Divider</header>
+					<ul>
+						<li>
+							<label class="danger">
+								<input type="checkbox">
+								<span></span>
+							</label>
+							<p>Title <strong>strong</strong></p>
+						</li>
+						<li>
+							<label class="danger">
+								<input type="checkbox">
+								<span></span>
+							</label>
+							<a href="#/detail">
+								<p>Item Clickable <strong>Strong</strong></p>
+							</a>
+						</li>
+						<li>
+							<label class="danger">
+								<input type="checkbox">
+								<span></span>
+							</label>
+							<a href="#/detail">
+								<p>Item Clickable <strong>Strong</strong></p>
+							</a>
+						</li>
+						<li>
+							<label class="danger">
+								<input type="checkbox">
+								<span></span>
+							</label>
+							<a href="#/detail">
+								<p>Item Clickable <strong>Strong</strong></p>
+							</a>
+						</li>
+						<li>
+							<label class="danger">
+								<input type="checkbox">
+								<span></span>
+							</label>
+							<aside class="pack-end">
+								<img alt="placeholder" src>
+							</aside>
+							<a href="#/detail">
+								<p>Item Clickable <strong>Strong</strong></p>
+								<p>meta</p>
+							</a>
+						</li>
+
+						<li aria-disabled="true">
+							<label class="danger">
+								<input type="checkbox">
+								<span></span>
+							</label>
+							<aside class="pack-end">
+								<img alt="placeholder" src>
+							</aside>
+							<a href="#">
+								<p>Disabled Title <strong>strong</strong></p>
+								<p>meta</p>
+							</a>
+						</li>
+					</ul>
+				</section>
+
+				<!-- Detail -->
+				<section id="detail" data-viewport="end" class="detail">
+				</section>
+
+				<!-- Add -->
+				<section id="add" data-viewport="end" class="add">
+				</section>
+
+				<!-- Settings -->
+				<section id="settings" data-viewport="behind" class="settings fullscreen skin-organic bb-list" role="region">
+					<header class="header">
+						<a href="#" data-trigger="back" data-hideon="list" class="back"><span class="icon icon-close">Close</span></a>
+						<h1>Settings</h1>
+					</header>
+					<header>
+						<h2>Settings style</h2>
+					</header>
+					<ul data-type="list" >
+						<li>
+							<aside class="pack-end">
+								<button class="icon icon-dialog" data-trigger="select">Option 1</button>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+								</select>
+							</aside>
+							<p>Time zone</p>
+							<p>Choose your country</p>
+						</li>
+						<li>
+						<aside class="pack-end">
+							<label>
+								<input type="checkbox" checked="" data-type="switch">
+								<span></span>
+							</label>
+							</aside>
+							<p>Phone lock</p>
+						</li>
+					</ul>
+				</section>
+
+				<!-- Error view -->
+				<section id="error" data-viewport="end" class="error">
+					<div class="inner">
+						<h1>404</h1>
+						<p>An error ocurred</p>
+					</div>
+				</section>
+
+			</section>
+
+			<ul role="tablist" data-items="3" class="bb-tabs">
+				<li role="tab">
+					<a href="#/list">List</a>
+				</li>
+				<li role="tab">
+					<a href="#/add">Add</a>
+				</li>
+				<li role="tab">
+					<a href="#/settings">Settings</a>
+				</li>
+			</ul>
+
+		</section>
+
+	</body>
+</html>

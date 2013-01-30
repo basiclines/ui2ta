@@ -1,0 +1,30 @@
+/* .bb-list overrides shared/style_unstable/lists.css */
+.bb-list,
+.bb-list ul { padding: 0; }
+
+.bb-list li,
+.bb-list li a,
+.bb-list ul[data-type="edit"] li,
+.bb-list header { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+	.bb-list ul[data-type="edit"] li[aria-disabled="true"] { -moz-transform: none; }
+		.bb-list li label input + span { left: 1.5rem;}
+		.bb-list li a { margin: 0 -1.5rem; }
+
+		.bb-list li aside { margin-left: -1.5rem }
+		.bb-list li aside.pack-end { margin-right: -1.5rem }
+			.bb-list li img[src=""] { background: rgba(0, 0, 0, 0.1); font-size: 0; }
+
+		.bb-list li aside button { margin-top: 1rem; }
+		.bb-list li aside select {
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+
+/* Tabs basics override */
+.bb-tabs { height: auto; position: absolute; bottom: 0; left: 0; right: 0; }

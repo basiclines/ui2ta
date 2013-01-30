@@ -1,0 +1,57 @@
+/*  Main UI declaration */
+body,
+html {
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	font: 10px/1em "MozTT", Sans-serif;
+}
+
+/* Hidden elements */
+.hidden { display: none!important; }
+
+
+/* Main views container */
+.wrapper { height: 100%; position: relative; }
+
+/* Header basics */
+.header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+/* Custom transitions */
+.header,
+.header h1,
+.header .back,
+.header .action { transition: all 0.2s ease; }
+
+.header.hidden,
+.header .back.hidden,
+.header .action.hidden {
+	display: block!important;
+	opacity: 0;
+}
+
+.header h1 { transform: translateX(0); }
+.header h1.hidden {
+	display: block!important;
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	transform: translateX(30%);
+}
+
+
+
+
+
+
+
+
+
+
+
