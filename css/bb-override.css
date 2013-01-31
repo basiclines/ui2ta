@@ -86,6 +86,7 @@ section[role="region"] { left: auto; padding-left: 0; position: static; }
 			section[role="region"] > header:first-child > a .icon:after { width: 2rem; }
 		section[role="region"] > header:first-child h1 { margin-left: 3rem; }
 
+section[data-type="sidebar"] { width: calc(100% - 6.5rem); }
 	section[data-type="sidebar"] > header .icon.icon-add { background-image: url(../shared/style/headers/images/icons/add.png); }
 
 	section[role="region"].wrapper { position: relative; }

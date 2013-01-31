@@ -14,7 +14,13 @@ html {
 body[data-sidebar="on"] .wrapper { transform: translateX(calc(100% - 6.5rem)); }
 
 /* Main views container */
-.wrapper { height: 100%; position: relative; overflow: hidden; background: #fff; }
+.wrapper {
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+	 transform: translate(0);
+}
 
 /* Header basics */
 .header {
