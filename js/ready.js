@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	dom.toggleSide = document.querySelector("[data-trigger=sidebar]");
 	dom.back = document.querySelectorAll("[data-trigger=back]");
 	dom.edit = document.querySelector("[data-trigger=edit]");
-	dom.select = document.querySelector("[data-trigger=select]");
+	dom.select = document.querySelectorAll("[data-trigger=select]");
 	dom.clear = document.querySelectorAll("button[type=reset]");
 
 	// Sidebar
@@ -65,10 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	// Selects
-	var nativeSelect = dom.select.parentNode.querySelector("select");
-	nativeSelect.addEventListener("change", function(){
-		dom.select.innerHTML = this.value;
-	});
+	for (var i = 0; i < dom.select.length; i++) {
+		var triggerSelect = dom.select[i];
+		var nativeSelect = triggerSelect.parentNode.querySelector("select");
+		nativeSelect.addEventListener("change", function(){
+			triggerSelect.innerHTML = this.value;
+		});
+	}
 
 	// Clear field action
 	dom.attach(dom.clear, "click", function(e) {
