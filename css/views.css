@@ -44,9 +44,13 @@
 .list { }
 
 
+/* Add view */
+.add { padding: 1.5rem; }
+
 /* Settings view */
 .settings { background: #EFF0EB;  }
 	.settings.bb-list li aside.pack-end { margin: 0 0 0 1.5rem; }
+	.settings .inner { padding: 1.5rem 1.5rem 0; margin: -1.5rem 0 0; border-top: solid 0.1rem #DBD9D9; }
 
 
 /* Error view */

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Main wrappers
 	dom = document.body;
+	dom.sidebar = document.getElementById("sidebar");
 	dom.main = document.getElementById("main");
 	dom.views = document.getElementById("views");
 
@@ -25,10 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Buttons
+	dom.toggleSide = document.querySelector("[data-trigger=sidebar]");
 	dom.back = document.querySelectorAll("[data-trigger=back]");
 	dom.edit = document.querySelector("[data-trigger=edit]");
 	dom.select = document.querySelector("[data-trigger=select]");
+	dom.clear = document.querySelectorAll("button[type=reset]");
 
+	// Sidebar
+	dom.toggleSide.addEventListener("click", function(e) {
+		if ( dom.dataset.sidebar == "on" ) {
+			dom.dataset.sidebar = "";
+		} else {
+			dom.dataset.sidebar = "on";
+		}
+		e.preventDefault();
+	});
+
+	var sublinks = dom.sidebar.querySelectorAll("a");
+	dom.attach(sublinks, "click", function(e){
+		dom.dataset.sidebar = "";
+	});
 
 	// Back action
 	dom.attach(dom.back, "click", function(e) {
@@ -53,7 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		dom.select.innerHTML = this.value;
 	});
 
-	// Load home
-	views.home();
+	// Clear field action
+	dom.attach(dom.clear, "click", function(e) {
+		this.parentNode.querySelector("input").value="";
+		e.preventDefault();
+	});
+
+	// Load desired view
+	views.onchange();
 
 });

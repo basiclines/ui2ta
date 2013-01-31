@@ -3,15 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 
-		<title>My Secret App</title>
+		<title>UI 2 Takeaway</title>
 
 		<!-- Shared CSS -->
 		<link rel="stylesheet" type="text/css" href="shared/style/headers.css">
 		<link rel="stylesheet" type="text/css" href="shared/style/buttons.css">
 		<link rel="stylesheet" type="text/css" href="shared/style/switches.css">
 		<link rel="stylesheet" type="text/css" href="shared/style/input_areas.css">
+		<link rel="stylesheet" type="text/css" href="shared/style_unstable/seekbars.css">
 		<link rel="stylesheet" type="text/css" href="shared/style_unstable/tabs.css">
 		<link rel="stylesheet" type="text/css" href="shared/style_unstable/lists.css">
+		<link rel="stylesheet" type="text/css" href="shared/style_unstable/drawer.css">
 
 		<!-- Override BB styles -->
 		<link rel="stylesheet" type="text/css" href="css/bb-override.css">
@@ -27,16 +29,44 @@
 
 	<body>
 
-		<section id="main" role="region" class="wrapper">
-			<header class="header">
-				<a href="#" data-trigger="back" data-hideon="list" class="back"><span class="icon icon-back">Back</span></a>
+		<section id="sidebar" data-type="sidebar">
+			<header>
 				<menu type="toolbar">
-					<a href="#" data-showon="list" data-trigger="edit" class="action">Edit</a>
+					<a href="#"><span class="icon icon-add">add</span></a>
+				</menu>
+				<h1>Title <em>(9)</em></h1>
+			</header>
+			<nav>
+				<ul>
+					<li><a href="#/list">List</a></li>
+					<li><a href="#/detail">Detail</a></li>
+				</ul>
+				<h2>Subtitle</h2>
+				<ul>
+					<li><a href="#/add">Add</a></li>
+					<li><a href="#/settings">Settings</a></li>
+				</ul>
+			</nav>
+		</section>
+
+		<section id="main" role="region" class="wrapper">
+			<header class="header" data-hideon="settings">
+				<a href="#" data-trigger="back" data-showon="detail" class="back"><span class="icon icon-back">Back</span></a>
+				<a href="#" data-trigger="sidebar" data-showon="add"><span class="icon icon-menu">Menu</span></a>
+				<menu type="toolbar">
+					<a href="#" data-showon="list" data-trigger="edit" class="action"><span class="icon icon-edit"></span></a>
 				</menu>
 				<h1 data-showon="list">List</h1>
 				<h1 data-showon="detail" class="hidden">Detail</h1>
 				<h1 data-showon="add" class="hidden">Add</h1>
 			</header>
+
+			<section role="region" data-showon="settings" class="header skin-organic">
+				<header class="header">
+					<a href="#" data-trigger="back" data-hideon="list" class="back"><span class="icon icon-close">Close</span></a>
+					<h1>Settings</h1>
+				</header>
+			</section>
 
 			<section id="views" class="views">
 
@@ -50,33 +80,6 @@
 								<span></span>
 							</label>
 							<p>Title <strong>strong</strong></p>
-						</li>
-						<li>
-							<label class="danger">
-								<input type="checkbox">
-								<span></span>
-							</label>
-							<a href="#/detail">
-								<p>Item Clickable <strong>Strong</strong></p>
-							</a>
-						</li>
-						<li>
-							<label class="danger">
-								<input type="checkbox">
-								<span></span>
-							</label>
-							<a href="#/detail">
-								<p>Item Clickable <strong>Strong</strong></p>
-							</a>
-						</li>
-						<li>
-							<label class="danger">
-								<input type="checkbox">
-								<span></span>
-							</label>
-							<a href="#/detail">
-								<p>Item Clickable <strong>Strong</strong></p>
-							</a>
 						</li>
 						<li>
 							<label class="danger">
@@ -114,14 +117,42 @@
 
 				<!-- Add -->
 				<section id="add" data-viewport="end" class="add">
+					<form>
+						<fieldset>
+							<legend class="action" data-trigger="select">Mobile</legend>
+							<select>
+								<option>Mobile</option>
+								<option>Home</option>
+								<option>Work</option>
+							</select>
+							<section>
+								<p>
+									<input type="tel" placeholder="Phone number">
+									<button type="reset">Clear</button>
+								</p>
+								<p>
+									<input type="text" placeholder="Name">
+									<button type="reset">Clear</button>
+								</p>
+							</section>
+						</fieldset>
+
+						<fieldset>
+							<legend>Work</legend>
+							<section>
+								<p>
+									<input type="tel" placeholder="Email">
+									<button type="reset">Clear</button>
+								</p>
+							</section>
+						</fieldset>
+						<button>Action</button>
+					</form>
 				</section>
 
 				<!-- Settings -->
-				<section id="settings" data-viewport="behind" class="settings fullscreen skin-organic bb-list" role="region">
-					<header class="header">
-						<a href="#" data-trigger="back" data-hideon="list" class="back"><span class="icon icon-close">Close</span></a>
-						<h1>Settings</h1>
-					</header>
+				<section id="settings" data-viewport="end" class="settings skin-organic bb-list" role="region">
+					<i> <!-- headers.css hack --> </i>
 					<header>
 						<h2>Settings style</h2>
 					</header>
@@ -138,16 +169,63 @@
 							<p>Time zone</p>
 							<p>Choose your country</p>
 						</li>
+
+						<li>
+							<aside class="pack-end">
+								<button class="icon icon-dialog" data-trigger="select">Option A</button>
+								<select multiple="true">
+									<option>Option A</option>
+									<option>Option B</option>
+									<option>Option C</option>
+								</select>
+							</aside>
+							<p>Multiple selection</p>
+							<p>You can choose more than one</p>
+						</li>
+
 						<li>
 						<aside class="pack-end">
 							<label>
-								<input type="checkbox" checked="" data-type="switch">
+								<input type="checkbox" data-type="switch">
 								<span></span>
 							</label>
 							</aside>
 							<p>Phone lock</p>
 						</li>
 					</ul>
+					<form action="#" class="inner">
+						 <p>
+							<input placeholder="Username" type="text">
+							<button type="reset">Clear</button>
+						</p>
+
+						<p>
+							<input placeholder="Password" type="password">
+							<button type="reset">Clear</button>
+						</p>
+
+						<p>
+							<input placeholder="Time picker" type="time">
+							<button type="reset">Clear</button>
+						</p>
+
+						<p>
+							<input placeholder="Date picker" type="date">
+							<button type="reset">Clear</button>
+						</p>
+
+						<div aria-valuetext="slider description" aria-valuemax="100" aria-valuenow="80" aria-valuemin="0" role="slider">
+							<label>0</label>
+							<label>100</label>
+							<div>
+								<progress max="100" value="80"></progress>
+								<button>handler</button>
+							</div>
+						</div>
+
+						<button class="recommend">Login</button>
+						<button class="danger">Remove all my data</button>
+					</form>
 				</section>
 
 				<!-- Error view -->

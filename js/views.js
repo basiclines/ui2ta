@@ -74,12 +74,17 @@ var views = {
 	},
 
 	home: function() {
-		this.go(dom.view.list.id);
+		this.go(dom.view.add.id);
 	},
 
 	onchange: function(e) {
 		var view = window.location.hash.split("#/")[1];
-		this.go(view);
+		// If no hash set go home
+		if (view) {
+			this.go(view);
+		} else {
+			this.home();
+		}
 	}
 }
 
