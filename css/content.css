@@ -1,0 +1,27 @@
+/* List view */
+.list { }
+
+
+/* Add view */
+.add { padding: 1.5rem; }
+
+/* Settings view */
+.settings { background: #EFF0EB;  }
+	.settings.bb-list li aside.pack-end { margin: 0 0 0 1.5rem; }
+	.settings .inner { padding: 1.5rem 1.5rem 0; margin: -1.5rem 0 0; border-top: solid 0.1rem #DBD9D9; }
+
+
+/* Error view */
+.error { text-align: center; white-space: nowrap; }
+	.error:after {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		width: 1px;
+		height: 100%;
+	}
+	.error .inner { display: inline-block; vertical-align: middle; white-space: normal; }
+	.error h1,
+	.error p {  line-height: 1em; margin: 0; }
+	.error h1 { font-size: 7rem; }
+	.error p { font-size: 3rem; color: #8a8a8a; }

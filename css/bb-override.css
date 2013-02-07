@@ -15,7 +15,7 @@
 		.bb-list li aside.pack-end { margin-right: -1.5rem }
 			.bb-list li img[src=""] { background: rgba(0, 0, 0, 0.1); font-size: 0; }
 
-		.bb-list li aside button { margin-top: 1rem; }
+		.bb-list li aside button { margin-top: 1rem; padding: 0 1.5rem 0 1rem; }
 		.bb-list li aside select {
 			width: 100%;
 			height: 100%;
@@ -52,8 +52,8 @@ input[type="time"]::-moz-placeholder {
   color: #666;
 }
 
-fieldset section input[type="date"],
-fieldset section input[type="time"] {
+.bb-form fieldset section input[type="date"],
+.bb-form fieldset section input[type="time"] {
   height: 4rem;
   border: none;
   border-radius: 0;
@@ -61,21 +61,22 @@ fieldset section input[type="time"] {
   font-weight: 600;
 }
 
-form p { margin-bottom: 1rem; }
-form p input + button[type="reset"],
-form p textarea + button[type="reset"] {
+.bb-form p { margin-bottom: 1rem; }
+.bb-form p input + button[type="reset"],
+.bb-form p textarea + button[type="reset"] {
 	pointer-events: auto;
 }
 
-form fieldset { position: relative; margin-bottom: 1.5rem; }
-form fieldset select { position: absolute; left: 0; top: 0; width: 9.5rem; height: 4rem; opacity: 0; }
+.bb-form fieldset { position: relative; margin-bottom: 1.5rem; }
+.bb-form fieldset select { position: absolute; left: 0; top: 0; width: 9.5rem; height: 4rem; opacity: 0; }
+.bb-form fieldset p { margin: 0; }
 
 /* Seekbars override shared/style_unstable/seekbars.css */
-div[role="slider"] > div { padding-left: 1rem; padding-right: 1rem; }
+[role="slider"].bb-slider > div { padding-left: 1rem; padding-right: 1rem; }
 /*  conflict with switches */
-div[role="slider"] > label { width: auto; height: auto; }
+[role="slider"].bb-slider > label { width: auto; height: auto; }
 /*  conflict with buttons */
-div[role="slider"] button { padding: 0; left: 2rem; }
+[role="slider"].bb-slider button { padding: 0; left: 2rem; border: none; }
 
 
 /* Drawer override shared/style_unstable/drawer.css */

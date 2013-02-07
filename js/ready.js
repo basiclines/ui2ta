@@ -1,4 +1,4 @@
-// Define global key elements access and listeners
+// Define global key elements  and initialize UI listeners
 document.addEventListener("DOMContentLoaded", function () {
 
 	// Main wrappers
@@ -32,54 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	dom.select = document.querySelectorAll("[data-trigger=select]");
 	dom.clear = document.querySelectorAll("button[type=reset]");
 
-	// Sidebar
-	dom.toggleSide.addEventListener("click", function(e) {
-		if ( dom.dataset.sidebar == "on" ) {
-			dom.dataset.sidebar = "";
-		} else {
-			dom.dataset.sidebar = "on";
-		}
-		e.preventDefault();
-	});
+	// Other triggers
+	dom.slider = dom.main.querySelectorAll("[role=slider]");
 
-	var sublinks = dom.sidebar.querySelectorAll("a");
-	dom.attach(sublinks, "click", function(e){
-		dom.dataset.sidebar = "";
-	});
+	// Initialize UI handlers
+	uiHandlers();
 
-	// Back action
-	dom.attach(dom.back, "click", function(e) {
-		views.back();
-		e.preventDefault();
-	});
-
-	// Edit action
-	dom.edit.addEventListener("click", function(e) {
-		var items = dom.view.list.querySelector("ul");
-		if ( items.dataset.type == "edit" ) {
-			items.dataset.type = "";
-		} else {
-			items.dataset.type = "edit";
-		}
-		e.preventDefault();
-	});
-
-	// Selects
-	for (var i = 0; i < dom.select.length; i++) {
-		var triggerSelect = dom.select[i];
-		var nativeSelect = triggerSelect.parentNode.querySelector("select");
-		nativeSelect.addEventListener("change", function(){
-			triggerSelect.innerHTML = this.value;
-		});
-	}
-
-	// Clear field action
-	dom.attach(dom.clear, "click", function(e) {
-		this.parentNode.querySelector("input").value="";
-		e.preventDefault();
-	});
-
-	// Load desired view
+	// Load url location view
 	views.onchange();
 
 });

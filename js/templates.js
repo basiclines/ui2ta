@@ -1,37 +1,16 @@
-// Store all the HTML templates
+// Simple templates engine
+// Example:
+// var info = { name: "Ismael", surname: "Gonzalez" };
+// var tpl = "<p>#name# <stong>#surname#</strong></p>";
+// templates.parse(tpl, info)
 
 var templates = {};
-templates.get = function(template, data) {
-	var tpl = template;
+templates.parse = function(template, data) {
 	for ( var i in data ) {
 		var key = i;
 		var value = data[i];
-		tpl = tpl.replace("#"+key+"#", value);
+		template = template.replace(new RegExp("#"+key+"#", 'g'), value);
 	}
-	return tpl;
+	return template;
 }
-
-// Gists list item
-templates.contacts = "<li>"+
-							"<aside>"+
-								"<img alt='#name#' src='#photo#'>"+
-							"</aside>"+
-							"<a href='#url#'>"+
-								"<p>#name# <strong>#surname#</strong></p>"+
-								"<p>#phone#</p>"+
-							"</a>"+
-						"</li>";
-
-templates.plans = "<header>#date#</header>"+
-					"<ul>"+
-						"<li>"+
-							"<aside>"+
-								"<img alt='#title#' src='#photo#'>"+
-							"</aside>"+
-							"<a href='#url#'>"+
-								"<p><strong>#title#</strong> <em>#location#</em></p>"+
-								"<p>#description#</p>"+
-							"</a>"+
-						"</li>"+
-					"</ul>";
 

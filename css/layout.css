@@ -13,15 +13,6 @@ html {
 
 body[data-sidebar="on"] .wrapper { transform: translateX(calc(100% - 6.5rem)); }
 
-/* Main views container */
-.wrapper {
-	height: 100%;
-	position: relative;
-	overflow: hidden;
-	background: #fff;
-	 transform: translate(0);
-}
-
 /* Header basics */
 .header {
 	position: absolute;
@@ -34,7 +25,7 @@ body[data-sidebar="on"] .wrapper { transform: translateX(calc(100% - 6.5rem)); }
 .header,
 .header h1,
 .header .back,
-.header .action { transition: all 0.2s ease; }
+.header .action { transition: all 0.3s ease; }
 
 .header.hidden,
 .header .back.hidden,

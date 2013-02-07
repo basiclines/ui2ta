@@ -3,254 +3,54 @@
 	<head>
 		<meta charset="utf-8" />
 
-		<title>UI 2 Takeaway</title>
+		<title>Install UI2Takeaway</title>
 
-		<!-- Shared CSS -->
-		<link rel="stylesheet" type="text/css" href="shared/style/headers.css">
-		<link rel="stylesheet" type="text/css" href="shared/style/buttons.css">
-		<link rel="stylesheet" type="text/css" href="shared/style/switches.css">
-		<link rel="stylesheet" type="text/css" href="shared/style/input_areas.css">
-		<link rel="stylesheet" type="text/css" href="shared/style_unstable/seekbars.css">
-		<link rel="stylesheet" type="text/css" href="shared/style_unstable/tabs.css">
-		<link rel="stylesheet" type="text/css" href="shared/style_unstable/lists.css">
-		<link rel="stylesheet" type="text/css" href="shared/style_unstable/drawer.css">
+		<!-- VIEWPORT TAGS -->
+		<meta name = "viewport" content = "width = device-width, user-scalable =no" >
+		<script type="text/javascript">
+			// Nicely stolen from:
+			// http://blog.margaretleibovic.com/post/42380607377/hacking-firefox-os-apps-with-github-pages
+			// https://github.com/leibovic/mural/blob/master/js/mural.js#L30
+			function checkInstalled() {
+				var request = window.navigator.mozApps.getSelf();
+				request.onsuccess = function getSelfSuccess() {
+					// Bail if the app is already installed
+					if (request.result) {
+						document.body.dataset.installed = true;
+						return;
+					}
 
-		<!-- Override BB styles -->
-		<link rel="stylesheet" type="text/css" href="css/bb-override.css">
+					var installButton = document.createElement('button');
+					installButton.innerHTML = "Install UI2Takeaway";
+					document.body.appendChild(installButton)
+					installButton.addEventListener('click', installApp);
+				};
+				request.onerror = function getSelfError() {
+					console.warn('error getting self: ' + request.error.name);
+				};
+			}
 
-		<!-- App flow -->
-		<link rel="stylesheet" type="text/css" href="css/layout.css">
-		<link rel="stylesheet" type="text/css" href="css/skin.css">
-		<link rel="stylesheet" type="text/css" href="css/views.css">
+			function installApp() {
+				var location = window.location.href;
+				var manifest = location.substring(0, location.lastIndexOf('/')) + '/manifest.webapp';
+				console.log('installApp: ' + manifest);
 
-		<script type="text/javascript" src="js/views.js"></script>
-		<script type="text/javascript" src="js/ready.js"></script>
+				var request = navigator.mozApps.install(manifest);
+				request.onsuccess = function installSuccess() {
+					console.log('success installing app: ' + request.result.manifest.name);
+					document.body.dataset.installed = true;
+				};
+				request.onerror = function installError() {
+					console.warn('error installing app: ' + request.error.name);
+				};
+			}
+
+			document.addEventListener("DOMContentLoaded", function(){
+				checkInstalled();
+			});
+		</script>
+		<link rel="stylesheet" href="shared/style/buttons.css">
 	</head>
 
-	<body>
-
-		<section id="sidebar" data-type="sidebar">
-			<header>
-				<menu type="toolbar">
-					<a href="#"><span class="icon icon-add">add</span></a>
-				</menu>
-				<h1>Title <em>(9)</em></h1>
-			</header>
-			<nav>
-				<ul>
-					<li><a href="#/list">List</a></li>
-					<li><a href="#/detail">Detail</a></li>
-				</ul>
-				<h2>Subtitle</h2>
-				<ul>
-					<li><a href="#/add">Add</a></li>
-					<li><a href="#/settings">Settings</a></li>
-				</ul>
-			</nav>
-		</section>
-
-		<section id="main" role="region" class="wrapper">
-			<header class="header" data-hideon="settings">
-				<a href="#" data-trigger="back" data-hideon="add" class="back"><span class="icon icon-back">Back</span></a>
-				<a href="#" data-trigger="sidebar" data-showon="add"><span class="icon icon-menu">Menu</span></a>
-				<menu type="toolbar">
-					<a href="#" data-showon="list" data-trigger="edit" class="action"><span class="icon icon-edit"></span></a>
-				</menu>
-				<h1 data-showon="list">List</h1>
-				<h1 data-showon="detail" class="hidden">Detail</h1>
-				<h1 data-showon="add" class="hidden">Add</h1>
-			</header>
-
-			<section role="region" data-showon="settings" class="header skin-organic">
-				<header class="header">
-					<a href="#" data-trigger="back" data-hideon="list" class="back"><span class="icon icon-back">Back</span></a>
-					<h1>Settings</h1>
-				</header>
-			</section>
-
-			<section id="views" class="views">
-
-				<!-- List  -->
-				<section id="list" data-viewport="start" class="list bb-list" data-type="list">
-					 <header>Divider</header>
-					<ul>
-						<li>
-							<label class="danger">
-								<input type="checkbox">
-								<span></span>
-							</label>
-							<p>Title <strong>strong</strong></p>
-						</li>
-						<li>
-							<label class="danger">
-								<input type="checkbox">
-								<span></span>
-							</label>
-							<aside class="pack-end">
-								<img alt="placeholder" src>
-							</aside>
-							<a href="#/detail">
-								<p>Item Clickable <strong>Strong</strong></p>
-								<p>meta</p>
-							</a>
-						</li>
-
-						<li aria-disabled="true">
-							<label class="danger">
-								<input type="checkbox">
-								<span></span>
-							</label>
-							<aside class="pack-end">
-								<img alt="placeholder" src>
-							</aside>
-							<a href="#">
-								<p>Disabled Title <strong>strong</strong></p>
-								<p>meta</p>
-							</a>
-						</li>
-					</ul>
-				</section>
-
-				<!-- Detail -->
-				<section id="detail" data-viewport="end" class="detail">
-				</section>
-
-				<!-- Add -->
-				<section id="add" data-viewport="end" class="add">
-					<form>
-						<fieldset>
-							<legend class="action" data-trigger="select">Mobile</legend>
-							<select>
-								<option>Mobile</option>
-								<option>Home</option>
-								<option>Work</option>
-							</select>
-							<section>
-								<p>
-									<input type="tel" placeholder="Phone number">
-									<button type="reset">Clear</button>
-								</p>
-								<p>
-									<input type="text" placeholder="Name">
-									<button type="reset">Clear</button>
-								</p>
-							</section>
-						</fieldset>
-
-						<fieldset>
-							<legend>Work</legend>
-							<section>
-								<p>
-									<input type="tel" placeholder="Email">
-									<button type="reset">Clear</button>
-								</p>
-							</section>
-						</fieldset>
-						<button>Action</button>
-					</form>
-				</section>
-
-				<!-- Settings -->
-				<section id="settings" data-viewport="end" class="settings skin-organic bb-list" role="region">
-					<i> <!-- headers.css hack --> </i>
-					<header>
-						<h2>Settings style</h2>
-					</header>
-					<ul data-type="list" >
-						<li>
-							<aside class="pack-end">
-								<button class="icon icon-dialog" data-trigger="select">Option 1</button>
-								<select>
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-								</select>
-							</aside>
-							<p>Time zone</p>
-							<p>Choose your country</p>
-						</li>
-
-						<li>
-							<aside class="pack-end">
-								<button class="icon icon-dialog" data-trigger="select">Option A</button>
-								<select multiple="true">
-									<option>Option A</option>
-									<option>Option B</option>
-									<option>Option C</option>
-								</select>
-							</aside>
-							<p>Multiple selection</p>
-							<p>You can choose more than one</p>
-						</li>
-
-						<li>
-						<aside class="pack-end">
-							<label>
-								<input type="checkbox" data-type="switch">
-								<span></span>
-							</label>
-							</aside>
-							<p>Phone lock</p>
-						</li>
-					</ul>
-					<form action="#" class="inner">
-						 <p>
-							<input placeholder="Username" type="text">
-							<button type="reset">Clear</button>
-						</p>
-
-						<p>
-							<input placeholder="Password" type="password">
-							<button type="reset">Clear</button>
-						</p>
-
-						<p>
-							<input placeholder="Time picker" type="time">
-							<button type="reset">Clear</button>
-						</p>
-
-						<p>
-							<input placeholder="Date picker" type="date">
-							<button type="reset">Clear</button>
-						</p>
-
-						<div aria-valuetext="slider description" aria-valuemax="100" aria-valuenow="80" aria-valuemin="0" role="slider">
-							<label>0</label>
-							<label>100</label>
-							<div>
-								<progress max="100" value="80"></progress>
-								<button>handler</button>
-							</div>
-						</div>
-
-						<button class="recommend">Login</button>
-						<button class="danger">Remove all my data</button>
-					</form>
-				</section>
-
-				<!-- Error view -->
-				<section id="error" data-viewport="end" class="error">
-					<div class="inner">
-						<h1>404</h1>
-						<p>An error ocurred</p>
-					</div>
-				</section>
-
-			</section>
-
-			<ul role="tablist" data-items="3" class="bb-tabs">
-				<li role="tab">
-					<a href="#/list">List</a>
-				</li>
-				<li role="tab">
-					<a href="#/add">Add</a>
-				</li>
-				<li role="tab">
-					<a href="#/settings">Settings</a>
-				</li>
-			</ul>
-
-		</section>
-
-	</body>
+	<body> <!-- Install button --> </body>
 </html>

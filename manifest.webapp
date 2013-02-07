@@ -1,9 +1,9 @@
 {
   "name": "UI 2takeaway",
   "description": "Common UI patterns for common apps",
-  "launch_path": "/index.html",
+  "launch_path": "app.html",
   "icons": {
-    "128": "/gphx/icons/appicon.png"
+    "128": "gphx/icons/appicon.png"
   },
   "developer": {
     "name": "Ismael Gonzalez - @basiclines",
