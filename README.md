@@ -7,6 +7,7 @@ If you open it from a FirefoxOS device it will ask for installing.
 
 ## UI guidelines
 * **More UI components**: http://www.buildingfirefoxos.com (not Mozilla official)
+* **Building Blocks**: https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/UX/Building_blocks
 * **App icons styleguide**: http://www.mozilla.org/en-US/styleguide/products/firefoxos/icons/
 
 ## View managing (js/views.js)
