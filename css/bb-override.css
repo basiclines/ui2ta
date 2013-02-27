@@ -52,6 +52,9 @@ input[type="time"]::-moz-placeholder {
   color: #666;
 }
 
+/* Switches */
+label:not([for]) { width: 6rem; }
+
 .bb-form fieldset section input[type="date"],
 .bb-form fieldset section input[type="time"] {
   height: 4rem;
@@ -68,7 +71,7 @@ input[type="time"]::-moz-placeholder {
 }
 
 .bb-form fieldset { position: relative; margin-bottom: 1.5rem; }
-.bb-form fieldset select { position: absolute; left: 0; top: 0; width: 9.5rem; height: 4rem; opacity: 0; }
+.bb-form fieldset select { position: absolute; left: 0; top: 0; width: 9.5rem; height: 100%; opacity: 0; }
 .bb-form fieldset p { margin: 0; }
 
 /* Seekbars override shared/style_unstable/seekbars.css */
