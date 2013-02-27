@@ -1,5 +1,5 @@
 # UI 2 takeaway
-Is a common set of UI patterns for *FirefoxOS applications* ready to use. Also provides basic views managing, basic UI utilties & default app icon.
+A Firefox OS Application placeholder ready to use with common UI solutions
 
 ## Try the example
 Open http://basiclines.github.com/ui2ta/ from your browser.
