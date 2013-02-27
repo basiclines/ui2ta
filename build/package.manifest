@@ -1,14 +1,15 @@
 {
-  "name": "UI 2takeaway",
-  "description": "Common UI patterns for common apps",
-  "launch_path": "app.html",
+  "name": "ui2ta",
+  "package_path": "http://192.168.1.36/mozilla/apps/ui2ta/build/package.zip",
+  "size": 268.700,
+  "version": "1.0",
+  "release_notes": "",
   "icons": {
     "120": "/gphx/icons/appicon.png",
     "60": "/gphx/icons/appicon.png"
-  },
+    },
   "developer": {
     "name": "Ismael Gonzalez - @basiclines",
     "url": "http://sweetbits.es"
-  },
-  "default_locale": "en"
+  }
 }

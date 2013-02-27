@@ -1,5 +1,9 @@
 # UI 2 takeaway
-Is a common set of UI patterns ready to use. Also provides basic views managing, basic UI handlers & default app icon
+Is a common set of UI patterns ready to use. Also provides basic views managing, basic UI handlers & default app icon.
+
+## Try the example
+Open http://basiclines.github.com/ui2ta/ from your browser.
+If you open it from a FirefoxOS device it will ask for installing.
 
 ## UI guidelines
 * **More UI components**: http://www.buildingfirefoxos.com (not Mozilla official)

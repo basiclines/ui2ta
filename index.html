@@ -3,54 +3,35 @@
 	<head>
 		<meta charset="utf-8" />
 
-		<title>Install UI2Takeaway</title>
+		<title>Install UI2TA</title>
 
-		<!-- VIEWPORT TAGS -->
-		<meta name = "viewport" content = "width = device-width, user-scalable =no" >
-		<script type="text/javascript">
-			// Nicely stolen from:
-			// http://blog.margaretleibovic.com/post/42380607377/hacking-firefox-os-apps-with-github-pages
-			// https://github.com/leibovic/mural/blob/master/js/mural.js#L30
-			function checkInstalled() {
-				var request = window.navigator.mozApps.getSelf();
-				request.onsuccess = function getSelfSuccess() {
-					// Bail if the app is already installed
-					if (request.result) {
-						document.body.dataset.installed = true;
-						return;
-					}
+		<script>
+		var isFFOS = function() {
+			if (navigator.userAgent.search("Mozilla") != -1 && navigator.userAgent.search("Mobile") != -1) {
+				return true
+			} else {
+				return false
+			};
+		};
+		if ( isFFOS) {
+			// This URL must be a full url.
+			var manifestUrl = 'http://192.168.1.36/mozilla/apps/ui2ta/build/package.manifest';
+			var req = navigator.mozApps.installPackage(manifestUrl);
+			req.onsuccess = function() {
+				console.log(this.result.origin);
+			};
+			req.onerror = function() {
+				console.log(this.error.name);
+			};
 
-					var installButton = document.createElement('button');
-					installButton.innerHTML = "Install UI2Takeaway";
-					document.body.appendChild(installButton)
-					installButton.addEventListener('click', installApp);
-				};
-				request.onerror = function getSelfError() {
-					console.warn('error getting self: ' + request.error.name);
-				};
-			}
+		} else {
+			window.location.href = window.location.href+"app"
+		}
 
-			function installApp() {
-				var location = window.location.href;
-				var manifest = location.substring(0, location.lastIndexOf('/')) + '/manifest.webapp';
-				console.log('installApp: ' + manifest);
-
-				var request = navigator.mozApps.install(manifest);
-				request.onsuccess = function installSuccess() {
-					console.log('success installing app: ' + request.result.manifest.name);
-					document.body.dataset.installed = true;
-				};
-				request.onerror = function installError() {
-					console.warn('error installing app: ' + request.error.name);
-				};
-			}
-
-			document.addEventListener("DOMContentLoaded", function(){
-				checkInstalled();
-			});
 		</script>
-		<link rel="stylesheet" href="shared/style/buttons.css">
 	</head>
 
-	<body> <!-- Install button --> </body>
+	<body></body>
 </html>
+
+
