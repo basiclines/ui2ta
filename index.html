@@ -15,7 +15,7 @@
 		};
 		if ( isFFOS() ) {
 			// This URL must be a full url.
-			var manifestUrl = 'http://basiclines.github.com/ui2ta/build/package.manifest';
+			var manifestUrl = 'http://basiclines.github.io/ui2ta/build/package.manifest';
 			var req = navigator.mozApps.installPackage(manifestUrl);
 			req.onsuccess = function() {
 				console.log(this.result.origin);
