@@ -8,9 +8,9 @@
 		<script>
 		var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
 
-		if ( isFFOS() ) {
+		if (isFFOS) {
 			// This URL must be a full url.
-			var manifestUrl = 'http://basiclines.github.io/ui2ta/build/';
+			var URL = 'http://basiclines.github.io/ui2ta/build/';
 
 			if ( window.devicePixelRatio > 1.2 && supportHIDPI ) {
 				var manifestUrl = URL+'package@2x.manifest';
