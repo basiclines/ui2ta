@@ -6,16 +6,18 @@
 		<title>Install UI2TA</title>
 
 		<script>
-		var isFFOS = function() {
-			if ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1) {
-				return true
-			} else {
-				return false
-			};
-		};
+		var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
+
 		if ( isFFOS() ) {
 			// This URL must be a full url.
-			var manifestUrl = 'http://basiclines.github.io/ui2ta/build/package.manifest';
+			var manifestUrl = 'http://basiclines.github.io/ui2ta/build/';
+
+			if ( window.devicePixelRatio > 1.2 && supportHIDPI ) {
+				var manifestUrl = URL+'package@2x.manifest';
+			} else {
+				var manifestUrl = URL+'package.manifest';
+			}
+
 			var req = navigator.mozApps.installPackage(manifestUrl);
 			req.onsuccess = function() {
 				console.log(this.result.origin);
