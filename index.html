@@ -3,12 +3,15 @@
 	<head>
 		<meta charset="utf-8" />
 
-		<title>Install UI2TA</title>
+		<title>UI2TA</title>
 
 		<script>
+		// Turn it to false to always install 'normal' package
+		var supportHIDPI = true;
 		var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
 
-		if (isFFOS) {
+		if ( isFFOS ) {
+
 			// This URL must be a full url.
 			var URL = 'http://basiclines.github.io/ui2ta/build/';
 
